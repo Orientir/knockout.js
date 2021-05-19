@@ -1,0 +1,40 @@
+.input-group {
+	padding: 0 20px;
+	margin: 20px 0;
+	vertical-align: middle;
+	width: auto !important;
+}
+
+.form-control {
+	width: 50px !important;
+	margin: 0 5px;
+	text-align: center;
+}
+
+.result {
+	display: flex;
+	justify-content: center;
+}
+
+.system {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+	height:100px;
+}
+
+p {
+	width: 100%;
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+span {
+	padding: .50rem .75rem;
+}

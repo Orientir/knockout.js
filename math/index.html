@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+	<link rel="stylesheet" type="text/css" href='style.css'/>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+</head>
+<body>
+<div id="accordion">
+<!-- DISCRIMINANT -->
+	<div class="card">
+		<div class="card-header" id="headingOne">
+			<h5 class="mb-0">
+				<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				  Решение уравнения методом Дискриминанта
+				</button>
+			</h5>
+		</div>
+		<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+			<div class="system">
+				<div></div>
+				<div class="input-group">
+					<div class="input-group-text">
+						Введите a, b, c
+					</div>
+					<input type="text" class="form-control" placeholder="a" data-bind="value: a" />
+					<div class="input-group-text">
+						x<sup>2</sup>
+					</div>
+					<input type="text" class="form-control" placeholder="b" data-bind="value: b" />
+					<div class="input-group-text">
+						x
+					</div>
+					<input type="text" class="form-control" placeholder="c" data-bind="value: c"/>
+					<div class="input-group-text">
+						= 0
+					</div> 
+				</div>
+			</div>
+			<div class="result">
+				<span>Ответ: </span>
+				<h2 data-bind="text: resultDiskriminant"></h2>
+			</div>
+		</div>	
+	</div>
+<!-- END DISCRIMINANT -->	
+
+<!-- SYSTEM OF EQUATIONS -->
+	<div class="card">
+		<div class="card-header" id="headingTwo">
+			<h5 class="mb-0">
+				<button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+				  Решение системы уравнений
+				</button>
+			</h5>
+		</div>
+		<div id="collapseTwo" class="collapse hide" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="system">
+				<div><img src="images/brace.png"></div>
+				<div>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="a" data-bind="value: aSys1" />
+						<div class="input-group-text">
+							x
+						</div>
+						<input type="text" class="form-control" placeholder="b" data-bind="value: bSys1" />
+						<div class="input-group-text">
+							y
+						</div>
+						<div class="input-group-text">
+							=
+						</div> 
+						<input type="text" class="form-control" placeholder="c" data-bind="value: cSys1"/>
+					</div>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="a" data-bind="value: aSys2" />
+						<div class="input-group-text">
+							x
+						</div>
+						<input type="text" class="form-control" placeholder="b" data-bind="value: bSys2" />
+						<div class="input-group-text">
+							y
+						</div>
+						<div class="input-group-text">
+							=
+						</div> 
+						<input type="text" class="form-control" placeholder="c" data-bind="value: cSys2"/>
+					</div>
+				</div>
+			</div>	
+			<div class="result">
+				<span>Ответ: </span>
+				<h2 data-bind="text: resultSystem"></h2>
+			</div>
+		</div>	
+	</div>
+<!-- END SYSTEM OF EQUATIONS -->
+
+<!-- SYSTEM OF DECART LINE-->
+<div class="card">
+	<div class="card-header" id="headingThree">
+		<h5 class="mb-0">
+			<button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+				График линейной функции
+			</button>
+		</h5>
+	</div>
+	<div id="collapseThree" class="collapse hide" aria-labelledby="headingThree" data-parent="#accordion">
+		<div class="system">
+			<div class="input-group">
+				<div class="input-group-text">
+					y
+				</div>
+				<div class="input-group-text">
+					=
+				</div>
+				<input type="text" class="form-control" placeholder="a" data-bind="value: aLine" />
+				<div class="input-group-text">
+					x
+				</div>
+				<input type="text" class="form-control" placeholder="b" data-bind="value: bLine"/>
+			</div>
+		</div>
+		<div class="result">
+			<span>Таблица: </span>
+			<div class="table-responsive-sm" style="display: flex;">
+				<table class="table table-bordered table-sm">
+					<tbody>
+						<tr>
+							<th scope="row">x</th>
+						</tr>
+						<tr>
+							<th scope="row">y</th>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-bordered table-sm">
+					<tbody data-bind="foreach: xyChartLine">
+					<tr>
+						<td data-bind="text: elemXY1">0</td>
+						<td data-bind="text: elemXY2">3</td>
+						<td data-bind="text: elemXY3">7</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="result " style="width: 800px; height:800px;">
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+				<canvas id="myChartLine"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END SYSTEM OF DECART LINE -->
+
+<!-- SYSTEM OF PARABOLA LINE-->
+<div class="card">
+	<div class="card-header" id="headingFourth">
+		<h5 class="mb-0">
+			<button class="btn btn-link" data-toggle="collapse" data-target="#collapseFourth" aria-expanded="true" aria-controls="collapseFourth">
+				График линейной функции
+			</button>
+		</h5>
+	</div>
+	<div id="collapseFourth" class="collapse hide" aria-labelledby="headingFourth" data-parent="#accordion">
+		<div class="system">
+			<div class="input-group">
+				<div class="input-group-text">
+					y
+				</div>
+				<div class="input-group-text">
+					=
+				</div>
+				<input type="text" class="form-control" placeholder="a" data-bind="value: aParabola" />
+				<div class="input-group-text">
+					x<sup>2</sup>
+				</div>
+				<input type="text" class="form-control" placeholder="b" data-bind="value: bParabola"/>
+				<div class="input-group-text">
+					x
+				</div>
+				<input type="text" class="form-control" placeholder="c" data-bind="value: cParabola"/>
+			</div>
+		</div>
+		<div class="result">
+			<span >Промежуточные результаты:  </span><h5 data-bind="text: xyChartParabola"></h5>
+		</div>
+		<div class="row justify-content-center">
+			<div class="result " style="width: 800px; height:800px;">
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+				<canvas id="myParabolaLine"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END SYSTEM OF PARABOLA LINE -->
+
+</div>	
+<script type="text/javascript" src="index.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
